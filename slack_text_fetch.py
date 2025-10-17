@@ -400,11 +400,9 @@ def write_members_csv(users: List[Dict[str, str]], path: str = "members.csv") ->
 
 
 def ensure_members_csv(token: str, path: str = "members.csv") -> None:
-    """Ensure members.csv exists or refresh when REFRESH_MEMBERS=1."""
-    refresh: bool = os.getenv("REFRESH_MEMBERS", "0") == "1"
-    if (not os.path.exists(path)) or refresh:
-        users = fetch_all_users(token)
-        write_members_csv(users, path)
+    """Always refresh members.csv on each run."""
+    users = fetch_all_users(token)
+    write_members_csv(users, path)
 
 
 def write_channel_list_csv(channels: List[Dict[str, str]], path: str = "channel_list.csv") -> None:
@@ -416,10 +414,9 @@ def write_channel_list_csv(channels: List[Dict[str, str]], path: str = "channel_
 
 
 def ensure_channel_list(token: str, path: str = "channel_list.csv") -> None:
-    """Ensure channel list CSV exists; if not, fetch and create it."""
-    if not os.path.exists(path):
-        channels = fetch_all_channels(token)
-        write_channel_list_csv(channels, path)
+    """Always refresh channel_list.csv on each run."""
+    channels = fetch_all_channels(token)
+    write_channel_list_csv(channels, path)
 
 
 if __name__ == "__main__":
