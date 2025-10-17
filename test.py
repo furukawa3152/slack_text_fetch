@@ -6,7 +6,7 @@ import pandas as pd
 import codecs
 
 SLACK_URL = "https://slack.com/api/conversations.history"
-TOKEN = "xoxb-2923753693205-3914837757633-ZW0PXXMiWZkEBw4wQmFcFDGE"
+TOKEN = ""
 
 def main(CHANNEL_NAME,SLACK_CHANNEL_ID):
     # Slackからエクスポートしたデータでメンバー名のDict作成
